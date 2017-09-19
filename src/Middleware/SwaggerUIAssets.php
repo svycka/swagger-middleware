@@ -57,8 +57,8 @@ class SwaggerUIAssets implements ServerMiddlewareInterface
 
     private function getAssetsPath()
     {
-        if (file_exists(dirname(__DIR__, 3) . '/swagger-api/swagger-ui/dist/')) {
-            return dirname(__DIR__, 3) . '/swagger-api/swagger-ui/dist/';
+        if (file_exists(dirname(__DIR__, 4) . '/swagger-api/swagger-ui/dist/')) {
+            return dirname(__DIR__, 4) . '/swagger-api/swagger-ui/dist/';
         }
         if (file_exists(dirname(__DIR__, 2) . '/vendor/swagger-api/swagger-ui/dist/')) {
             return dirname(__DIR__, 2) . '/vendor/swagger-api/swagger-ui/dist/';
