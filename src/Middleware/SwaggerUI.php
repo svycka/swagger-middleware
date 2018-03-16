@@ -2,12 +2,12 @@
 
 namespace SwaggerMiddleware\Middleware;
 
-use Interop\Http\ServerMiddleware\DelegateInterface;
-use Interop\Http\ServerMiddleware\MiddlewareInterface as ServerMiddlewareInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response\HtmlResponse;
 
-class SwaggerUI implements ServerMiddlewareInterface
+class SwaggerUI implements RequestHandlerInterface
 {
     /**
      * @var array
@@ -19,7 +19,7 @@ class SwaggerUI implements ServerMiddlewareInterface
         $this->config = $config;
     }
 
-    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $template = file_get_contents(dirname(__DIR__).'/templates/documentation.phtml');
 

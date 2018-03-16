@@ -4,7 +4,6 @@ namespace SwaggerMiddlewareTest\Middleware;
 
 use SwaggerMiddleware\Generator;
 use SwaggerMiddleware\Middleware\ApiSpecification;
-use Interop\Http\ServerMiddleware\DelegateInterface;
 use PHPUnit\Framework\TestCase;
 use Zend\Diactoros\ServerRequest;
 
@@ -23,10 +22,7 @@ class ApiSpecificationTest extends TestCase
     public function testWillGenerateAndReturnSpecification()
     {
         $this->generator->generate()->willReturn($swagger = new \Swagger\Annotations\Swagger([]))->shouldBeCalled();
-        $response = $this->middleware->process(
-            new ServerRequest(),
-            $this->prophesize(DelegateInterface::class)->reveal()
-        );
+        $response = $this->middleware->handle(new ServerRequest());
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals($swagger, $response->getPayload());

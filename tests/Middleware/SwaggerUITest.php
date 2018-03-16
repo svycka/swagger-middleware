@@ -3,7 +3,6 @@
 namespace SwaggerMiddlewareTest\Middleware;
 
 use SwaggerMiddleware\Middleware\SwaggerUI;
-use Interop\Http\ServerMiddleware\DelegateInterface;
 use PHPUnit\Framework\TestCase;
 use Zend\Diactoros\ServerRequest;
 
@@ -19,10 +18,7 @@ class SwaggerUITest extends TestCase
             ]
         ];
         $swaggerUI = new SwaggerUI($config);
-        $response = $swaggerUI->process(
-            new ServerRequest(),
-            $this->prophesize(DelegateInterface::class)->reveal()
-        );
+        $response = $swaggerUI->handle(new ServerRequest());
 
         $this->assertEquals(200, $response->getStatusCode());
         $html = $response->getBody()->getContents();

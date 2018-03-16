@@ -2,13 +2,13 @@
 
 namespace SwaggerMiddleware\Middleware;
 
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use SwaggerMiddleware\Generator;
-use Interop\Http\ServerMiddleware\DelegateInterface;
-use Interop\Http\ServerMiddleware\MiddlewareInterface as ServerMiddlewareInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response\JsonResponse;
 
-final class ApiSpecification implements ServerMiddlewareInterface
+final class ApiSpecification implements RequestHandlerInterface
 {
     /**
      * @var Generator
@@ -25,7 +25,7 @@ final class ApiSpecification implements ServerMiddlewareInterface
         $this->generator = $generator;
     }
 
-    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         return new JsonResponse($this->generator->generate());
     }

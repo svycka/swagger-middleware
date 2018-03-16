@@ -2,8 +2,8 @@
 
 namespace SwaggerMiddlewareTest\Middleware;
 
+use Psr\Http\Server\RequestHandlerInterface;
 use SwaggerMiddleware\Middleware\SwaggerUIAssets;
-use Interop\Http\ServerMiddleware\DelegateInterface;
 use PHPUnit\Framework\TestCase;
 use Zend\Diactoros\Response;
 use Zend\Diactoros\ServerRequest;
@@ -16,7 +16,7 @@ class SwaggerUIAssetsTest extends TestCase
         $request = (new ServerRequest())->withAttribute('asset', 'favicon-16x16.png');
         $response = $swaggerUIAssets->process(
             $request,
-            $this->prophesize(DelegateInterface::class)->reveal()
+            $this->prophesize(RequestHandlerInterface::class)->reveal()
         );
 
         $this->assertEquals('image/png', $response->getHeaderLine('Content-Type'));
@@ -24,7 +24,7 @@ class SwaggerUIAssetsTest extends TestCase
         $request = (new ServerRequest())->withAttribute('asset', 'oauth2-redirect.html');
         $response = $swaggerUIAssets->process(
             $request,
-            $this->prophesize(DelegateInterface::class)->reveal()
+            $this->prophesize(RequestHandlerInterface::class)->reveal()
         );
 
         $this->assertEquals('text/html', $response->getHeaderLine('Content-Type'));
@@ -32,7 +32,7 @@ class SwaggerUIAssetsTest extends TestCase
         $request = (new ServerRequest())->withAttribute('asset', 'swagger-ui-bundle.js');
         $response = $swaggerUIAssets->process(
             $request,
-            $this->prophesize(DelegateInterface::class)->reveal()
+            $this->prophesize(RequestHandlerInterface::class)->reveal()
         );
 
         $this->assertEquals('application/javascript', $response->getHeaderLine('Content-Type'));
@@ -40,7 +40,7 @@ class SwaggerUIAssetsTest extends TestCase
         $request = (new ServerRequest())->withAttribute('asset', 'swagger-ui.css');
         $response = $swaggerUIAssets->process(
             $request,
-            $this->prophesize(DelegateInterface::class)->reveal()
+            $this->prophesize(RequestHandlerInterface::class)->reveal()
         );
 
         $this->assertEquals('text/css', $response->getHeaderLine('Content-Type'));
@@ -54,7 +54,7 @@ class SwaggerUIAssetsTest extends TestCase
             $request = (new ServerRequest())->withAttribute('asset', $asset);
             $response = $swaggerUIAssets->process(
                 $request,
-                $this->prophesize(DelegateInterface::class)->reveal()
+                $this->prophesize(RequestHandlerInterface::class)->reveal()
             );
 
             $this->assertEquals(200, $response->getStatusCode());
@@ -64,11 +64,11 @@ class SwaggerUIAssetsTest extends TestCase
     public function testDelegateToNextMiddlewareWhenAssetNotFound()
     {
         $swaggerUIAssets = new SwaggerUIAssets();
-        $delegate = $this->prophesize(DelegateInterface::class);
+        $handler = $this->prophesize(RequestHandlerInterface::class);
         $request = (new ServerRequest())->withAttribute('asset', 'fake-image.png');
 
-        $delegate->process($request)->willReturn($notFoundResponse = new Response())->shouldBeCalled();
-        $response = $swaggerUIAssets->process($request, $delegate->reveal());
+        $handler->handle($request)->willReturn($notFoundResponse = new Response())->shouldBeCalled();
+        $response = $swaggerUIAssets->process($request, $handler->reveal());
 
         $this->assertEquals($notFoundResponse, $response);
     }

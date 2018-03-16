@@ -2,12 +2,13 @@
 
 namespace SwaggerMiddleware\Middleware;
 
-use Interop\Http\ServerMiddleware\DelegateInterface;
-use Interop\Http\ServerMiddleware\MiddlewareInterface as ServerMiddlewareInterface;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Zend\Diactoros\Response;
 
-class SwaggerUIAssets implements ServerMiddlewareInterface
+class SwaggerUIAssets implements MiddlewareInterface
 {
     const ALLOWED_FILES = [
         'favicon-16x16.png',
@@ -23,12 +24,12 @@ class SwaggerUIAssets implements ServerMiddlewareInterface
         'swagger-ui.js.map',
     ];
 
-    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $delegate): ResponseInterface
     {
         $asset = $request->getAttribute('asset');
 
         if (!in_array($asset, self::ALLOWED_FILES, true)) {
-            return $delegate->process($request);
+            return $delegate->handle($request);
         }
 
         $file = $this->getAssetsPath() . $asset;
