@@ -21,7 +21,7 @@ class ApiSpecificationTest extends TestCase
 
     public function testWillGenerateAndReturnSpecification()
     {
-        $this->generator->generate()->willReturn($swagger = new \Swagger\Annotations\Swagger([]))->shouldBeCalled();
+        $this->generator->generate()->willReturn($swagger = new \OpenApi\Annotations\OpenApi([]))->shouldBeCalled();
         $response = $this->middleware->handle(new ServerRequest());
 
         $this->assertEquals(200, $response->getStatusCode());
