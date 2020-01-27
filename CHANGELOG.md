@@ -7,7 +7,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## NEXT - YYYY-MM-DD
 
 ### Added
-- Nothing
+- [#2](https://github.com/svycka/swagger-middleware/pull/2) Added PHP 7.3 and PHP 7.4 support
 
 ### Deprecated
 - Nothing
