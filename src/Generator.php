@@ -17,10 +17,10 @@ class Generator
         $this->config = $config;
     }
 
-    public function generate(array $customConfig = null): \Swagger\Annotations\Swagger
+    public function generate(array $customConfig = null): \OpenApi\Annotations\OpenApi
     {
         $config = $customConfig ?? $this->config;
 
-        return \Swagger\scan($config['scan']['paths'], $config['scan']['options'] ?? []);
+        return \OpenApi\scan($config['scan']['paths'], $config['scan']['options'] ?? []);
     }
 }

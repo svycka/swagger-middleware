@@ -18,7 +18,7 @@ class GeneratorTest extends TestCase
         ];
         $generator = new Generator($config);
         $swagger = $generator->generate();
-        $this->assertInstanceOf(\Swagger\Annotations\Swagger::class, $swagger);
+        $this->assertInstanceOf(\OpenApi\Annotations\OpenApi::class, $swagger);
         $this->assertEquals('Test API', $swagger->info->title);
     }
 
@@ -39,7 +39,7 @@ class GeneratorTest extends TestCase
                 ]
             ]
         ]);
-        $this->assertInstanceOf(\Swagger\Annotations\Swagger::class, $swagger);
+        $this->assertInstanceOf(\OpenApi\Annotations\OpenApi::class, $swagger);
         $this->assertEquals('Test API', $swagger->info->title);
     }
 
