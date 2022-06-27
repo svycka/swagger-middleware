@@ -5,7 +5,7 @@ namespace SwaggerMiddleware\Middleware;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Zend\Diactoros\Response\HtmlResponse;
+use Laminas\Diactoros\Response\HtmlResponse;
 
 class SwaggerUI implements RequestHandlerInterface
 {

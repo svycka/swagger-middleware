@@ -4,7 +4,7 @@ namespace SwaggerMiddlewareTest\Middleware;
 
 use SwaggerMiddleware\Middleware\SwaggerUI;
 use PHPUnit\Framework\TestCase;
-use Zend\Diactoros\ServerRequest;
+use Laminas\Diactoros\ServerRequest;
 
 class SwaggerUITest extends TestCase
 {

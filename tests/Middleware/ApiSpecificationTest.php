@@ -5,7 +5,7 @@ namespace SwaggerMiddlewareTest\Middleware;
 use SwaggerMiddleware\Generator;
 use SwaggerMiddleware\Middleware\ApiSpecification;
 use PHPUnit\Framework\TestCase;
-use Zend\Diactoros\ServerRequest;
+use Laminas\Diactoros\ServerRequest;
 
 class ApiSpecificationTest extends TestCase
 {
