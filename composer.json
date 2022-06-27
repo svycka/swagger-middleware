@@ -31,7 +31,7 @@
         "psr/http-server-middleware": "^1.0",
         "swagger-api/swagger-ui": "^3.2",
         "symfony/finder": "^2.2 | ^3.0 | ^4.0",
-        "zendframework/zend-diactoros": "^1.6",
+        "zendframework/zend-diactoros": "^2.0",
         "zircote/swagger-php": "^2.0"
     },
     "require-dev": {
