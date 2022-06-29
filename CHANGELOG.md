@@ -4,7 +4,7 @@ All Notable changes to `svycka/swagger-middleware` will be documented in this fi
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## NEXT - YYYY-MM-DD
+## 0.3.0 - 2022-06-29
 
 ### Added
 - [#2](https://github.com/svycka/swagger-middleware/pull/2) Added PHP 7.3 and PHP 7.4 support
