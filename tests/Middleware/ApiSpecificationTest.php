@@ -5,7 +5,7 @@ namespace SwaggerMiddlewareTest\Middleware;
 use SwaggerMiddleware\Generator;
 use SwaggerMiddleware\Middleware\ApiSpecification;
 use PHPUnit\Framework\TestCase;
-use Zend\Diactoros\ServerRequest;
+use Laminas\Diactoros\ServerRequest;
 
 class ApiSpecificationTest extends TestCase
 {
@@ -13,7 +13,7 @@ class ApiSpecificationTest extends TestCase
     private $middleware;
     private $generator;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->generator = $this->prophesize(Generator::class);
         $this->middleware = new ApiSpecification($this->generator->reveal());

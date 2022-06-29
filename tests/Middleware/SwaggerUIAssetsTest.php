@@ -5,8 +5,8 @@ namespace SwaggerMiddlewareTest\Middleware;
 use Psr\Http\Server\RequestHandlerInterface;
 use SwaggerMiddleware\Middleware\SwaggerUIAssets;
 use PHPUnit\Framework\TestCase;
-use Zend\Diactoros\Response;
-use Zend\Diactoros\ServerRequest;
+use Laminas\Diactoros\Response;
+use Laminas\Diactoros\ServerRequest;
 
 class SwaggerUIAssetsTest extends TestCase
 {

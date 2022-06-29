@@ -2,7 +2,7 @@
 
 namespace SwaggerMiddleware;
 
-use Zend\ServiceManager\Factory\InvokableFactory;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 
 /**
  * The configuration provider for the SwaggerMiddleware module
