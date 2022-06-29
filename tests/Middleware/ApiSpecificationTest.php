@@ -13,7 +13,7 @@ class ApiSpecificationTest extends TestCase
     private $middleware;
     private $generator;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->generator = $this->prophesize(Generator::class);
         $this->middleware = new ApiSpecification($this->generator->reveal());

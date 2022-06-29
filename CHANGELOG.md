@@ -8,6 +8,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ### Added
 - [#2](https://github.com/svycka/swagger-middleware/pull/2) Added PHP 7.3 and PHP 7.4 support
+- [#3](https://github.com/svycka/swagger-middleware/pull/3) Added PHP 8.0 and 8.1 support
 
 ### Deprecated
 - Nothing
